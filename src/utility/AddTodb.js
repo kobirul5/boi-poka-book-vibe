@@ -1,7 +1,7 @@
-import { getItem } from "localforage"
-import { json } from "react-router-dom"
+import { toast } from "react-toastify"
 
 const getStoredReadList = () => {
+    
     const storedListStr = localStorage.getItem('read-list')
     if(storedListStr){
         const storedList = JSON.parse(storedListStr)
@@ -22,6 +22,7 @@ const addStoredReadList= (id) => {
         storedList.push(id)
         const listStoredStr = JSON.stringify(storedList)
         localStorage.setItem("read-list" ,listStoredStr) 
+        toast("This book added to you read list")
     }
 }
-export {addStoredReadList}
+export {addStoredReadList, getStoredReadList}
